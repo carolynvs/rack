@@ -44,13 +44,13 @@ func tableList(c *cli.Context, i interface{}) {
 	}
 	t := tablewriter.NewWriter(c.App.Writer)
 	t.SetAlignment(tablewriter.ALIGN_LEFT)
-	keys := []string{"ID", "DisplayName", "DisplayDescription", "Size", "VolumeType", "SnapshotID", "Attachments", "CreatedAt"}
+	keys := []string{"ID", "Name", "Description", "Size", "VolumeType", "SnapshotID", "Attachments", "CreatedAt"}
 	t.SetHeader(keys)
 	for _, volume := range volumes {
 		m := structs.Map(volume)
 		f := []string{}
 		for _, key := range keys {
-			f = append(f, fmt.Sprint(m[key]))
+			f = append(f, fmt.Sprintln(m[key]))
 		}
 		t.Append(f)
 	}
